@@ -3,11 +3,15 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID = credentials('your-aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+        NODE_OPTIONS = "--openssl-legacy-provider"
+
     }
    
     stages {
         stage('Build') {
             steps {
+                sh 'npm update'
+                sh 'npm audit fix'
                 sh 'npm install'
                 sh 'npm run build'
             }
