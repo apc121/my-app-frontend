@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm update'
-                sh 'npm audit fix --force'
+                sh 'npm audit fix'
                 sh 'npm install'
                 sh 'npm run build'
             }
